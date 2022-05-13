@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS `#__obacht_instagram` (
+	`id` int(10) NOT NULL AUTO_INCREMENT,
+	`hello` text NOT NULL,
+	`lang` varchar(25) NOT NULL,
+
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
