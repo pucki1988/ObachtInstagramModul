@@ -24,7 +24,7 @@ class ModObachtInstagramHelper
     public static function getInstagramPosts($params)
     {
         $token = $params->get('longtime_api_token');
-        $url = "https://graph.instagram.com/me/media?fields=id,media_url,media_type&limit=6&access_token=".$token;
+        $url = "https://graph.instagram.com/me/media?fields=id,media_url,media_type,permalink,caption,username&limit=6&access_token=".$token;
         $ch = curl_init();    
         curl_setopt($ch, CURLOPT_URL, $url); 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -32,42 +32,5 @@ class ModObachtInstagramHelper
         $result = curl_exec($ch); 
         curl_close($ch); 
         return json_decode($result)->data;
-    }
-
-    public function getInstagramLinks($instagram_ids){
-
-        $insta_links=array();
-        foreach($instagram_ids as $post )
-        {
-            $instagram_id=$post->id;
-            $url_prefix = "https://www.instagram.com/p/";
-
-
-    
-            if(!empty(strpos($instagram_id, '_'))){
-        
-                $parts = explode('_', $instagram_id);
-        
-                $instagram_id = $parts[0];
-        
-                $userid = $parts[1];
-        
-            }
-        
-            $alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
-        
-            while($instagram_id > 0){
-        
-                $remainder = $instagram_id % 64;
-                $instagram_id = ($instagram_id-$remainder) / 64;
-                $url_suffix = $alphabet{$remainder} . $url_suffix;
-        
-            };
-
-            array_push($insta_links,$url_prefix.$url_suffix);
-        }
-    
-        return $insta_links;
-    
     }
 }
