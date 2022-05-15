@@ -28,11 +28,11 @@ defined('_JEXEC') or die; ?>
 
 .i-post:hover > .i-caption{
     top:0;
-    -webkit-transition: all .5s ease;
--moz-transition: all .5s ease;
--ms-transition: all .5s ease;
--o-transition: all .5s ease;
-transition: all .5s ease;
+    -webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
 }
 
 
