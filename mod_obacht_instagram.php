@@ -17,5 +17,7 @@ defined('_JEXEC') or die;
 // Include the syndicate functions only once
 require_once dirname(__FILE__) . '/helper.php';
 
-$hello = modObachtInstagramHelper::getHello($params);
+$instagram_posts = modObachtInstagramHelper::getInstagramPosts($params);
+$instagram_links = modObachtInstagramHelper::getInstagramLinks($instagram_posts);
+
 require JModuleHelper::getLayoutPath('mod_obacht_instagram');

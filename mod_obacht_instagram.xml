@@ -12,10 +12,22 @@
         <filename>tmpl/default.php</filename>
         <filename>tmpl/index.html</filename>
     </files>
-    <folder>sql</folder>
+    <!--<folder>sql</folder>-->
     <config>
+        <fields name="params">
+			<fieldset name="basic">
+				<field
+					name="longtime_api_token"
+					type="text"
+					label="Token"
+					description="MOD_OBACHT_INSTAGRAM_TOKEN_DESC"
+					default=""
+				/>
+            </fieldset>
+        </fields>
+
     </config>
-    <install>
+    <!--<install>
         <sql>   
             <file driver="mysql" charset="utf8">sql/mysql/install.mysql.utf8.sql</file>
         </sql>
@@ -31,5 +43,5 @@
         <schemas>
             <schemapath type="mysql">sql/mysql/updates</schemapath> 
         </schemas> 
-    </update>
+    </update>-->
 </extension>
