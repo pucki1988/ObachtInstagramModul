@@ -26,7 +26,19 @@ defined('_JEXEC') or die; ?>
     z-index: 0;
 }
 
-.i-post:hover > .i-caption{
+.scrolldown-icon{
+    position: absolute;
+    color: #ffc11e;
+    bottom: 0;
+    text-align: center;
+    z-index: 5;
+    left: 5px;
+    width: 50px;
+    height: 3rem;
+    line-height: 3rem;
+}
+
+.i-post .scrolldown-icon:hover + .i-caption{
     top:0;
     cursor:pointer;
     -webkit-transition: all .3s ease;
@@ -36,9 +48,23 @@ defined('_JEXEC') or die; ?>
 transition: all .3s ease;
 }
 
-@media(max-width:767px){
+.scrolldown-icon:hover{
+    color:#000;
+}
+
+@media(max-width:581px){
     .i-post span{
         font-size:.8rem;
+    }
+
+    .i-caption{
+    font-size:.7rem;
+    }
+
+    .scrolldown-icon{
+        line-height:3.5rem;
+        left: 0;
+        width: 40px;
     }
 }
 
@@ -48,17 +74,20 @@ transition: all .3s ease;
     <div class="row no-gutters">
         
 <?php 
+
 foreach($instagram_posts as $post)
-{ ?>
-    <div class="col-md-4 col-6 mt-2 i-posts p-1">
+{ 
+    ?>
+    <div class="col-md-4 col-6 mt-2 i-posts px-1">
 
         <?php 
             echo '<div class="w-100 h-100 i-post" style="position:relative">';
-            echo '<a href="'.$post->permalink.'" class="h-100 w-100">';
+            echo '<a class="scrolldown-icon" href="#section7"><i class="fas fa-ellipsis-v"></i></a>';
+            echo '<div class="i-caption p-2">'.$post->caption.'</div>';
+            echo '<a class="link-insta" href="'.$post->permalink.'" class="h-100 w-100">';
             echo '<span class="icon d-flex align-items-center justify-content-end">'.$post->username.'<i class="fab fa-instagram fa-2x p-2"></i></span>';
             echo '<img class="w-100" src="'.$post->media_url.'" />';
             echo '</a>';
-            echo '<div class="i-caption p-2">'.$post->caption.'</div>';
             echo '</div>';
             
         ?>
