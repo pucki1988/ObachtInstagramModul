@@ -28,6 +28,7 @@ defined('_JEXEC') or die; ?>
 
 .i-post:hover > .i-caption{
     top:0;
+    cursor:pointer;
     -webkit-transition: all .3s ease;
 -moz-transition: all .3s ease;
 -ms-transition: all .3s ease;
@@ -35,15 +36,21 @@ defined('_JEXEC') or die; ?>
 transition: all .3s ease;
 }
 
+@media(max-width:767px){
+    .i-post span{
+        font-size:.8rem;
+    }
+}
+
 
 </style>
 
-    <div class="row">
+    <div class="row no-gutters">
         
 <?php 
 foreach($instagram_posts as $post)
 { ?>
-    <div class="col-md-4 col-12 my-3 i-posts">
+    <div class="col-md-4 col-6 mt-2 i-posts p-1">
 
         <?php 
             echo '<div class="w-100 h-100 i-post" style="position:relative">';
