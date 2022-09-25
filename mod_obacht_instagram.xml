@@ -74,6 +74,6 @@
     </update>-->
 
     <updateservers>
-	<server type="extension" name="mod_obacht_instagram" priority="1"><![CDATA[https://raw.githubusercontent.com/pucki1988/ObachtInstagramModul/main/manifest.xml]]></server>
+	<server type="extension" name="Obacht Instagram" priority="1"><![CDATA[https://raw.githubusercontent.com/pucki1988/ObachtInstagramModul/main/manifest.xml]]></server>
 </updateservers>
 </extension>
