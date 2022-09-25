@@ -17,6 +17,18 @@ defined('_JEXEC') or die;
 // Include the syndicate functions only once
 require_once dirname(__FILE__) . '/helper.php';
 
-$instagram_posts = modObachtInstagramHelper::getInstagramPosts($params);
+$token = modObachtInstagramHelper::getToken();
+if($token == "NO TOKEN" || $token ==""){
+    $refresh=modObachtInstagramHelper::refreshLongliveToken();
+    if($refresh){
+        $token = modObachtInstagramHelper::getToken();
+        $instagram_posts = modObachtInstagramHelper::getInstagramPosts($token);
+    }else{
+        $token= modObachtInstagramHelper::getLongliveToken($params);
+        $instagram_posts = modObachtInstagramHelper::getInstagramPosts($token);
+    }
+}else{
+    $instagram_posts = modObachtInstagramHelper::getInstagramPosts($token);
+}
 
 require JModuleHelper::getLayoutPath('mod_obacht_instagram');

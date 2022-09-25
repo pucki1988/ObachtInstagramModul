@@ -2,7 +2,7 @@
 <extension type="module" version="3.1.0" client="site" method="upgrade">
     <name>Obacht! Instagram</name>
     <author>Andreas Schuster</author>
-    <version>1.0.0</version>
+    <version>3.0.0</version>
     <description>Einbinden eines Instagram Media Stream</description>
     <files>
         <filename>mod_obacht_instagram.xml</filename>
@@ -11,23 +11,51 @@
         <filename>helper.php</filename>
         <filename>tmpl/default.php</filename>
         <filename>tmpl/index.html</filename>
+        <folder>sql</folder>
     </files>
-    <!--<folder>sql</folder>-->
+    
     <config>
         <fields name="params">
 			<fieldset name="basic">
+            <field
+                name="shorttime_token"
+                type="text"
+                label="Kurzzeit Token"
+				description="MOD_OBACHT_INSTAGRAM_SHORTTOKEN_DESC"
+				default=""
+            />
+            <field
+                name="insta_app_secret"
+                type="text"
+                label="App Secret"
+				description="MOD_OBACHT_INSTAGRAM_SHORTTOKEN_DESC"
+				default=""
+            />
+            
 				<field
 					name="longtime_api_token"
-					type="text"
-					label="Token"
+					type="sql"
+					label="Langlebiger Schlüssel"
+                    query="SELECT token AS longtime_api_token FROM #__obacht_instagram"
 					description="MOD_OBACHT_INSTAGRAM_TOKEN_DESC"
 					default=""
 				/>
+
+            <field
+                name="expire_time"
+                type="sql"
+                label="Ablaufzeit"
+                query="SELECT expire_time  FROM #__obacht_instagram"
+				description="MOD_OBACHT_INSTAGRAM_TOKEN_DESC"
+				default=""
+    
+            />
+
             </fieldset>
         </fields>
 
     </config>
-    <!--<install>
+    <install>
         <sql>   
             <file driver="mysql" charset="utf8">sql/mysql/install.mysql.utf8.sql</file>
         </sql>
@@ -39,9 +67,13 @@
         </sql>
     </uninstall>
 
-    <update> 
+    <!--<update> 
         <schemas>
             <schemapath type="mysql">sql/mysql/updates</schemapath> 
         </schemas> 
     </update>-->
+
+    <updateservers>
+	<server type="extension" name="mod_obacht_instagram" priority="1"><![CDATA[https://raw.githubusercontent.com/pucki1988/ObachtInstagramModul/main/manifest.xml]]></server>
+</updateservers>
 </extension>
