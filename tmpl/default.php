@@ -6,6 +6,8 @@ defined('_JEXEC') or die; ?>
 <style>
 .i-post{
         overflow:hidden;
+        -webkit-aspect-ratio: 1 / 1 ;
+        aspect-ratio: 1 / 1;
 }
 .i-post span{
     width: 100%;
